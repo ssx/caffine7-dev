@@ -2,8 +2,8 @@
 /usr/bin/mysqld_safe &
 sleep 10s
 
-# php5-fpm
-/bin/touch /var/log/php5-fpm.log
+# make sure the logfile exists before we try to tail it
+/bin/touch /var/log/php7.0-fpm.log
 
 mysqladmin -u root password vagrant
 mysql -uroot -pvagrant -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'vagrant' WITH GRANT OPTION; FLUSH PRIVILEGES;"
