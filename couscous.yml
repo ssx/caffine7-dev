@@ -20,4 +20,6 @@ menu:
             relativeUrl: docs/troubleshooting.html            
         credits:
             text: "Credits"
-            relativeUrl: docs/credits.html  
+            relativeUrl: docs/credits.html
+
+baseUrl: http://ssx.github.io/caffine7-dev/
