@@ -64,6 +64,7 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD ./conf/nginx.conf /etc/nginx/sites-available/default
 ADD www /usr/share/nginx/www
 RUN chown -R www-data:www-data /usr/share/nginx/www
+RUN chmod -R 777 /usr/share/nginx/www
 
 # switch to work dir
 WORKDIR /usr/share/nginx/www
