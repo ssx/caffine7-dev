@@ -6,7 +6,7 @@ sleep 10s
 /bin/touch /var/log/php7.0-fpm.log
 
 mysqladmin -u root password vagrant
-mysql -uroot -pvagrant -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'vagrant' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+mysql -uroot -pvagrant -e "GRANT ALL PRIVILEGES ON *.* TO 'vagrant'@'%' IDENTIFIED BY 'vagrant' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 mysql -uroot -pvagrant -e "CREATE DATABASE vagrant; GRANT ALL PRIVILEGES ON vagrant.* TO 'vagrant'@'localhost' IDENTIFIED BY 'vagrant'; FLUSH PRIVILEGES;"
 killall mysqld
 
