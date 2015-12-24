@@ -51,17 +51,22 @@ RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php/7.0/fpm/php-fpm
 RUN sed -i -e "s/;catch_workers_output\s*=\s*yes/catch_workers_output = yes/g" /etc/php/7.0/fpm/pool.d/www.conf
 RUN find /etc/php/7.0/cli/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
+# create www directory
+RUN mkdir -p /www
+RUN chown -R www-data:www-data /www
+RUN chmod -R 777 /www
+ADD www /www
+RUN usermod -u 1000 www-data
+
 # nginx
 EXPOSE 80
-RUN mkdir -p /usr/share/nginx/www
 RUN sed -i -e"s/keepalive_timeout\s*65/keepalive_timeout 2/" /etc/nginx/nginx.conf
 RUN sed -i -e"s/keepalive_timeout 2/keepalive_timeout 2;\n\tclient_max_body_size 100m/" /etc/nginx/nginx.conf
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD ./conf/nginx.conf /etc/nginx/sites-available/default
-ADD www /usr/share/nginx/www
 
 # volumes
-VOLUME ["/var/lib/mysql", "/usr/share/nginx/www"]
+VOLUME ["/var/lib/mysql", "/www"]
 
 # add bootstrap script
 ADD ./start.sh /start.sh

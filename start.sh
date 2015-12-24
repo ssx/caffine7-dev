@@ -2,6 +2,11 @@
 /usr/bin/mysqld_safe &
 sleep 10s
 
+# set permissions on www directory & storage
+chown -R www-data:www-data /www
+mkdir -p /www/bootstrap/cache -p /www/storage/logs
+chmod -R 777 /www/storage www/bootstrap/cache
+
 # make sure the logfile exists before we try to tail it
 /bin/touch /var/log/php7.0-fpm.log
 
