@@ -8,10 +8,10 @@ documentation can always be found at [ssx.github.io/caffine7-dev/](http://ssx.gi
 which is updated automatically.
 
 #### Volumes
-Add a volume at `/usr/share/nginx/www` with a directory of `public` to serve for your web app.
+Add a volume at `/www` with a directory of `public` to serve for your web app.
 
 A MySQL volume can be added at `/var/lib/mysql`.
 
 
 #### Passwords
-SSH is running in the container along with MySQL. All usernames and passwords are `vagrant`.
+MySQL username and passwords are `vagrant`.
